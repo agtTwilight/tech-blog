@@ -14,6 +14,12 @@ Comment.belongsTo(Blog,{
     
 Blog.hasMany(Comment)
 
+Comment.belongsTo(User,{
+        onDelete:"CASCADE"
+})
+    
+User.hasMany(Comment)
+
 module.exports = {
     User,
     Blog,

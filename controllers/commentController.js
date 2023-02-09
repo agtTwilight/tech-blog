@@ -31,7 +31,7 @@ router.post("/", (req, res) => {
         }
         console.log(req.body);
         Comment.create({
-                comment: req.body.text,
+                text: req.body.text,
                 UserId: req.session.userId
         }).then(commentData => {
                 res.json(commentData)
