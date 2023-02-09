@@ -4,7 +4,7 @@ const sequelize = require('../config/connection');
 class Blog extends Model {}
 
 Blog.init({
-    post: {
+    blog: {
          type: DataTypes.STRING,
          allowNull:false,
     }

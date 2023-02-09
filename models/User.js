@@ -6,13 +6,12 @@ class User extends Model {}
 
 User.init({
     // add properites here, ex:
-//     TODO : maybe change to username?
-    email: {
+    username: {
          type: DataTypes.STRING,
          allowNull:false,
          unique:true,
          validate:{
-            isEmail:true
+            isAlphanumeric: true
          }
     },
     password:{
