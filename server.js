@@ -16,7 +16,7 @@ const {User, Comment, Blog} = require('./models');
 
 // Sets up sessions cookies
 const sess = {
-    secret: process.env.SESSION_SECRET,
+    secret: "process.env.SESSION_SECRET",
     cookie: {
         maxAge:1000*60*60*2
     },
