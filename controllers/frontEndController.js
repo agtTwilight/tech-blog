@@ -49,22 +49,8 @@ router.get("/signup", (req,res) => {
 })
 // TODO figure this out
 router.get("/logout", (req,res) => {
-        Blog.findAll(
-                {include:[User, Comment],
-                order: [["id", "DESC"]]},
-                )
-        .then((blogData) => {
-                req.session.destroy();
-                const hbsBlogs = blogData.map(blog => blog.toJSON());
-                let username;
-                if (req.session.userId) {
-                        username = req.session.username
-                }
-                res.render("home", {
-                        allBlogs: hbsBlogs,
-                        username: username ||"hadfhasdf"
-                })
-        })
+        req.session.destroy();
+        res.render("login")
 })
 
 module.exports = router;
