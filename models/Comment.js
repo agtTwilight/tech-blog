@@ -11,6 +11,10 @@ Comment.init({
          validate:{
             len:[1,240]
          }
+    },
+    username: {
+        type: DataTypes.STRING,
+        allowNull:false
     }
 },{
     sequelize

@@ -1,23 +1,56 @@
-const express = require('express');
+const express = require('express'); 
 const router = express.Router();
-const {Blog,User} = require('../models');
+const {Blog,User,Comment} = require('../models');
 
 // TODO: once home & login .handlebars are made, 1. check if user is logged in (if so, res.render home w/ appropriate data) else, res.render login w/ appropriate data
 router.get("/",(req,res)=>{
-        res.render("login")
+        Blog.findAll(
+                {include:[User, Comment],
+                order: [["id", "DESC"]]},
+                )
+        .then((blogData) => {
+                const hbsBlogs = blogData.map(blog => blog.toJSON());
+                let username;
+                if (req.session.userId) {
+                        username = req.session.username
+                }
+                res.render("home", {
+                        allBlogs: hbsBlogs,
+                        username: username
+                })
+        })
 })
 
-router.get("/signup",(req,res)=>{
+router.get("/dashboard",(req,res)=>{
+        if (!req.session.userId) {
+                return res.render("login")
+        }
+
+        Blog.findAll(
+                {include:[User, Comment],
+                order: [["id", "DESC"]],
+                where: {UserId:req.session.userId}
+        },)
+        .then((blogData) => {
+                const hbsBlogs = blogData.map(blog => blog.toJSON());
+                let username;
+                if (req.session.userId) {
+                        username = req.session.username
+                }
+                res.render("dashboard", {
+                        allBlogs: hbsBlogs,
+                        username: username
+                })
+        })
+})
+
+router.get("/signup", (req,res) => {
         res.render("signup")
 })
-
-router.get("/home",(req,res)=>{
-        res.render("home")
-})
-
-// TODO: add event listener that calls .../game url
-router.get("/game", (req,res) => {
-        res.render("game")
+// TODO figure this out
+router.get("/logout", (req,res) => {
+        req.session.destroy();
+        res.render("login")
 })
 
 module.exports = router;
