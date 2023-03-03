@@ -1,0 +1,21 @@
+.blog-box{
+        margin: 10px 0;
+        padding: 3px;
+        border: solid black 1px;
+}
+
+.blog-form {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+}
+
+.edit-form {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+}
+
+.blog-btn {
+        width: 10%;
+}

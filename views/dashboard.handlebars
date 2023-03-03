@@ -1,14 +1,13 @@
-{{#if username}}
-    <p>logged in as <a href="/dashboard">{{username}}</a></p>
+<section>
+    <p>{{username}}'s dashboard</p>
     <form class="blog-form">
         <input type="text" id="title" placeholder="new blog title">
         <textarea name="text" id="text" cols="15" rows="3" placeholder="new blog text"></textarea>
         <button class="blog-btn" type="submit">Post Blog!</button>
     </form>
-{{/if}}
-
-<h2>All Blogs:</h2>
-<hr>
+    <h2>Your Blogs:</h2>
+    <hr>
+</section>
 {{#each allBlogs}}
 <section class="blog-box" data-id="{{id}}">
     <h3>{{User.username}}: "{{title}}"</h3>
@@ -24,4 +23,4 @@
 </section>
 {{/each}}
 
-<script src="/js/home.js"></script>
+<script src="/js/dashboard.js"></script>

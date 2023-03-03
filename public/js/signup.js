@@ -4,7 +4,6 @@ document.querySelector("#signup-form").addEventListener("submit",e=>{
             username:document.querySelector("#signup-username").value,
             password:document.querySelector("#signup-password").value
         }
-        console.log(signupObj)
         fetch("/api/users/",{
             method:"POST",
             body:JSON.stringify(signupObj),
@@ -13,7 +12,7 @@ document.querySelector("#signup-form").addEventListener("submit",e=>{
             }
         }).then(res=>{
             if(res.ok){
-               location.href="/home"
+               location.href="/dashboard"
             } else {
                 alert("trumpet sound")
             }

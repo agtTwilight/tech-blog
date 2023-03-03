@@ -4,7 +4,7 @@ const { User, Blog, Comment } = require('../models');
 
 // get all blogs
 router.get("/", (req, res) => {
-        Blog.findAll().then(blogData => {
+        Blog.findAll({include:[User, Comment]}).then(blogData => {
                 res.json(blogData)
         }).catch(err => {
                 console.log(err);
@@ -31,7 +31,8 @@ router.post("/", (req, res) => {
         }
         console.log(req.body);
         Blog.create({
-                blog: req.body.blog,
+                title: req.body.title,
+                text: req.body.text,
                 UserId: req.session.userId
         }).then(blogData => {
                 res.json(blogData)

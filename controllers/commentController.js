@@ -32,7 +32,9 @@ router.post("/", (req, res) => {
         console.log(req.body);
         Comment.create({
                 text: req.body.text,
-                UserId: req.session.userId
+                UserId: req.session.userId,
+                BlogId: req.body.blogId,
+                username:req.session.username
         }).then(commentData => {
                 res.json(commentData)
         }).catch(err => {
