@@ -2,6 +2,8 @@
 # tech-blog
 ![badge](https://img.shields.io/badge/License-MIT-yellow.svg)
 
+
+AUTHOR NOTE: Currently not deployed (limited heroku credits). Should you be interested in viewing the project let me know and I can redeploy it.
 deployed link: https://t3ch--blog.herokuapp.com/
 
 ## Description
